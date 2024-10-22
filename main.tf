@@ -2,7 +2,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_lambda_function" "dev_node_cron_product_internalmodule" {
+resource "aws_lambda_function" "my-lambda-function" {
   function_name    = var.lambda_function_name
   role             = var.lambda_role_arn
   handler          = var.lambda_handler
