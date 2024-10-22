@@ -1,9 +1,9 @@
 output "lambda_function_name" {
-  value = aws_lambda_function.dev_node_cron_product_internalmodule.function_name 
+  value = aws_lambda_function.my-lambda-function.function_name 
 }
 
 output "lambda_function_arn" {
-  value = aws_lambda_function.dev_node_cron_product_internalmodule.arn 
+  value = aws_lambda_function.my-lambda-function.arn 
 }
 
 output "lambda_function_url" {
