@@ -1,50 +1,64 @@
-variable "region" {
-  description = "AWS Region"
-  type = string
-}
-
-variable "access_key" {
-  description = "Access Key Value"
-  type = string
-}
-
-variable "secret_key" {
-  description = "Access Key Value"
-  type = string
-}
-
-variable "lambda_function_name" {
-  description = "Name of the Lambda function"
+variable "aws_region" {
+  description = "The AWS region to deploy the Lambda function in."
   type        = string
 }
 
-variable "lambda_role_name" {
-  description = "Name of the IAM Role for Lambda"
+variable "lambda_function_name" {
+  description = "The name of the Lambda function."
   type        = string
 }
 
 variable "lambda_handler" {
-  description = "The Lambda function entry point"
+  description = "The function entry point in the code."
   type        = string
 }
 
 variable "lambda_runtime" {
-  description = "The Lambda runtime environment"
+  description = "The runtime environment for the Lambda function."
   type        = string
 }
 
-variable "lambda_filename" {
-  description = "The Lambda deployment package file"
+variable "architectures" {
+  description = "The architectures for the Lambda function."
+  type        = list(string)
+}
+
+variable "lambda_memory_size" {
+  description = "The amount of memory available to the function at runtime."
+  type        = number
+}
+
+variable "lambda_timeout" {
+  description = "The amount of time that Lambda allows a function to run before stopping it."
+  type        = number
+}
+
+variable "lambda_role_arn" {
+  description = "The ARN of the IAM role that Lambda assumes when it executes your function."
   type        = string
 }
 
-variable "lambda_environment_variables" {
-  description = "A map of environment variables to set for the Lambda function"
+variable "lambda_function_url_auth_type" {
+  description = "The auth type for the Lambda Function URL. Valid values: NONE, AWS_IAM."
+  type        = string
+}
+
+variable "subnet_ids" {
+  description = "Subnet Ids"
+  type = list(string)
+}
+
+variable "security_group_ids" {
+  description = "Security Group Ids"
+  type = list(string)
+}
+
+variable "filename" {
+  description = "This is the filename"
+  type = string
+}
+
+variable "environment_variables" {
+  description = "Environment variables for the Lambda function."
   type        = map(string)
 }
-
-variable "lambda_policy_arn" {
-  description = "ARN of the IAM policy to attach to Lambda role"
-  type        = string
-}
-

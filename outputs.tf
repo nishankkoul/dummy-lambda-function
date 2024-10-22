@@ -1,14 +1,11 @@
-output "lambda_function_arn" {
-  description = "The ARN of the Lambda function"
-  value       = aws_lambda_function.dummy_lambda.arn
-}
-
 output "lambda_function_name" {
-  description = "The name of the Lambda function"
-  value       = aws_lambda_function.dummy_lambda.function_name
+  value = aws_lambda_function.dev_node_cron_product_internalmodule.function_name 
 }
 
-output "lambda_role_arn" {
-  description = "The ARN of the Lambda execution role"
-  value       = aws_iam_role.lambda_exec_role.arn
+output "lambda_function_arn" {
+  value = aws_lambda_function.dev_node_cron_product_internalmodule.arn 
+}
+
+output "lambda_function_url" {
+  value = aws_lambda_function_url.lambda_function_url.function_url
 }

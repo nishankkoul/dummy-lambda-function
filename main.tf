@@ -1,38 +1,29 @@
 provider "aws" {
-  region = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
+  region = var.aws_region
 }
 
-resource "aws_lambda_function" "dummy_lambda" {
-  function_name     = var.lambda_function_name
-  role              = aws_iam_role.lambda_exec_role.arn
-  handler           = var.lambda_handler
-  runtime           = var.lambda_runtime
-  filename          = var.lambda_filename
-  source_code_hash  = filebase64sha256(var.lambda_filename)
+resource "aws_lambda_function" "dev_node_cron_product_internalmodule" {
+  function_name    = var.lambda_function_name
+  role             = var.lambda_role_arn
+  handler          = var.lambda_handler
+  runtime          = var.lambda_runtime
+  architectures    = var.architectures
+  memory_size      = var.lambda_memory_size
+  timeout          = var.lambda_timeout
+  filename         = var.filename
+  source_code_hash = filebase64sha256("dummy-lambda.zip")
 
   environment {
-    variables = var.lambda_environment_variables
+    variables = var.environment_variables
+  }
+
+  vpc_config {
+    subnet_ids         = var.subnet_ids
+    security_group_ids = var.security_group_ids
   }
 }
 
-resource "aws_iam_role" "lambda_exec_role" {
-  name = var.lambda_role_name
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [{
-      Action    = "sts:AssumeRole",
-      Effect    = "Allow",
-      Principal = {
-        Service = "lambda.amazonaws.com"
-      }
-    }]
-  })
-}
-
-resource "aws_iam_role_policy_attachment" "lambda_exec_policy" {
-  role       = aws_iam_role.lambda_exec_role.name
-  policy_arn = var.lambda_policy_arn
+resource "aws_lambda_function_url" "lambda_function_url" {
+  function_name       = aws_lambda_function.dev_node_cron_product_internalmodule.function_name  
+  authorization_type  = var.lambda_function_url_auth_type
 }
