@@ -38,10 +38,10 @@ variable "lambda_role_arn" {
   type        = string
 }
 
-variable "lambda_function_url_auth_type" {
-  description = "The auth type for the Lambda Function URL. Valid values: NONE, AWS_IAM."
-  type        = string
-}
+# variable "lambda_function_url_auth_type" {
+#   description = "The auth type for the Lambda Function URL. Valid values: NONE, AWS_IAM."
+#   type        = string
+# }
 
 variable "filename" {
   description = "This is the filename"
