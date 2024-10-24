@@ -43,16 +43,6 @@ variable "lambda_function_url_auth_type" {
   type        = string
 }
 
-variable "subnet_ids" {
-  description = "Subnet Ids"
-  type = list(string)
-}
-
-variable "security_group_ids" {
-  description = "Security Group Ids"
-  type = list(string)
-}
-
 variable "filename" {
   description = "This is the filename"
   type = string
