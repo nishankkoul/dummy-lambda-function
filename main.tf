@@ -16,11 +16,6 @@ resource "aws_lambda_function" "my-lambda-function" {
   environment {
     variables = var.environment_variables
   }
-
-  vpc_config {
-    subnet_ids         = var.subnet_ids
-    security_group_ids = var.security_group_ids
-  }
 }
 
 resource "aws_lambda_function_url" "lambda_function_url" {
