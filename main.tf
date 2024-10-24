@@ -18,7 +18,7 @@ resource "aws_lambda_function" "my-lambda-function" {
   }
 }
 
-resource "aws_lambda_function_url" "lambda_function_url" {
-  function_name       = aws_lambda_function.my-lambda-function.function_name  
-  authorization_type  = var.lambda_function_url_auth_type
-}
+# resource "aws_lambda_function_url" "lambda_function_url" {
+#   function_name       = aws_lambda_function.my-lambda-function.function_name  
+#   authorization_type  = var.lambda_function_url_auth_type
+# }
